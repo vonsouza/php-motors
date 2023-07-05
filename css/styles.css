@@ -1,0 +1,458 @@
+:root {
+    --blue-color: #4c96d7;
+    --light-grey: #d0d0d0;
+}
+
+/* it's new */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+/* it's new end */
+header {
+    max-width: 100%;
+}
+
+.internal-card {
+    margin: 1%;
+}
+
+.logo-image {
+    max-height: max-content;
+}
+.my-account {
+    float: right;
+    max-width: 100%;
+    font-size: x-large;
+    margin-right: 3%;
+    margin-top: 2%;
+    text-decoration: none;
+    color: black;
+}
+
+.no-decoration {
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav a:hover {
+    background-color: var(--blue-color);
+    color: black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card-external {
+    text-align: center;
+    min-width: 50%;
+}
+.card {
+    background-color: var(--blue-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 12px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    height: 100px;
+}
+
+.login-card {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 3%;
+    margin-inline-start: 10%;
+    margin-inline-end: 10%;
+}
+
+#clientEmail {
+    margin-inline-start: 43px;
+}
+#clientFirstname {
+    margin-inline-start: 5px;
+}
+#clientLastname {
+    margin-inline-start: 13px;
+}
+#clientEmailReg {
+    margin-inline-start: 50px;
+}
+#clientPassword {
+    margin-inline-start: 15px;
+}
+.explan-password {
+    font-size: xx-small;
+    font-style: italic;
+}
+.btn-show-password {
+    background-color: #333;
+    color: #f2f2f2;
+}
+.reviews-title {
+    margin-bottom: 10%;
+}
+ul li {
+    margin: 4%;
+}
+
+.messageSuccessOrError {
+    color: darkcyan;
+    font-size: smaller;
+    font-style: oblique;
+    font-weight: bold;
+    animation: blink 3s infinite;
+    margin: 5%;
+    text-align: center;
+    background-color: rgb(155, 240, 240);
+}
+
+#inv-display {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#inv-display li {
+    margin-bottom: 0.5em;
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+}
+
+#inv-display li img {
+    max-width: 100%;
+}
+
+/* Image Management */
+
+
+.no-dot{
+    list-style-type: none;
+}
+
+/* vehicle */
+.vehicle-card {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+  }
+  
+  .vehicle-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    animation: blink 3s infinite;
+  }
+  
+  .vehicle-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10%;
+  }
+
+  .vehicle-thumbnail{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5%;
+    max-height: 50px;
+  }
+  .vehicle-thumbnail:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+  }
+  
+  .vehicle-text {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+  }
+  
+  .vehicle-description {
+    font-size: 16px;
+  }
+  .img-box{
+    box-shadow: 10px 10px 5px lightblue;
+  }
+/* footer */
+hr {
+    border: none;
+    border-top: 5px solid black;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.container-img {
+    position: relative;
+}
+
+.text-0 {
+    position: absolute;
+    top: 2%;
+    left: 0%;
+    transform: translate(20%, 20%);
+    color: var(--blue-color);
+    line-height: 0.8%;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: larger;
+}
+
+.text-1 {
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    transform: translate(20%, 20%);
+    color: var(--blue-color);
+    line-height: 0.8%;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: larger;
+}
+
+.text-2 {
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    transform: translate(20%, 20%);
+    color: var(--blue-color);
+    line-height: 0.8%;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: larger;
+}
+
+.text-3 {
+    position: absolute;
+    top: 17%;
+    left: 1%;
+    transform: translate(20%, 20%);
+    color: var(--blue-color);
+    line-height: 0.8%;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: larger;
+}
+
+.img-own_today {
+    position: absolute;
+    top: 22%;
+    left: 0%;
+    transform: translate(20%, 20%);
+    max-width: 150px;
+}
+
+.container-img .delorean-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.big-img-own_today {
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* inputs */
+input:required:invalid,
+input:focus:invalid {
+    /* background-image: url(/images/invalid.png); */
+    background-color: #f4d9cc;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+input:required:valid {
+    /* background-image: url(/images/valid.png); */
+    background-color: #ccebd7;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 800px) {
+    .last-update,
+    .img-own_today {
+        display: none;
+    }
+    .reviews-title {
+        margin-bottom: 5%;
+    }
+    body {
+        background-color: #fff;
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: bold;
+    }
+    .main-card {
+        margin: 1%;
+        background-color: #fff;
+    }
+}
+@media (min-width: 800px) {
+    .big-img-own_today {
+        display: none;
+    }
+    .container {
+        display: flex;
+    }
+
+    .child-container {
+        flex: 1;
+    }
+
+    #child-container-1 {
+        order: 2;
+    }
+
+    #child-container-2 {
+        order: 1;
+    }
+    body {
+        background-image: url("../images/site/checkerboard.jpg");
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: bold;
+    }
+    .main-card {
+        margin: 1%;
+        background-color: #fff;
+        border: 5px solid var(--blue-color);
+    }
+    .my-account {
+        margin-top: 1%;
+    }
+    .login-card,
+    .vehicle-card {
+        margin-inline-start: 20%;
+        margin-inline-end: 20%
+    }
+    #image-display {
+        margin-inline-start: 10%;
+        margin-inline-end: 10%
+    }
+    /* For vehicle display in classification view */
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+	}
+
+	#inv-display li {
+		max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+      
+	#inv-display div {
+		width: 100%;
+	}
+}
+@media (min-width: 1100px) {
+    .login-card, 
+    .vehicle-card {
+        margin-inline-start: 30%;
+        margin-inline-end: 30%;
+    }
+    #image-display {
+        margin-inline-start: 20%;
+        margin-inline-end: 20%;
+    }
+    /* For vehicle display in classification view */
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+	}
+
+	#inv-display li {
+		max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+      
+	#inv-display div {
+		width: 100%;
+	}
+}
