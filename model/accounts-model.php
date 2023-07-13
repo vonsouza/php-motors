@@ -62,6 +62,30 @@ function getClient($clientEmail){
     return $clientData;
    }
 
+// WORKING ON IT: Get client data based on an id
+function getClientById($clientId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $nameEdit = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $nameEdit;
+   }
+
+// WORKING ON IT: Get client data based on an email address
+function getClientNameEdit($clientId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $nameEdit = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $nameEdit;
+   }
+
 //function to update client
 function updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId){
     // Create a connection object using the phpmotors connection function
