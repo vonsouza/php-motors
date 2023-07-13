@@ -39,6 +39,15 @@ if ($action == NULL) {
 switch ($action) {
 
     case 'home':
+        //$_SESSION['loggedin'] = FALSE;
+        //session_destroy();
+        //unset($_SESSION);
+        //setcookie('firstname',  '', time() - 3600);
+        //unset($_COOKIE['firstname']);
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/home.php';
+        break;
+
+    case 'logout':
         $_SESSION['loggedin'] = FALSE;
         session_destroy();
         unset($_SESSION);
@@ -46,12 +55,7 @@ switch ($action) {
         unset($_COOKIE['firstname']);
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/home.php';
         break;
-
-        // session_destroy();
-        // unset($_SESSION);
-        // setcookie('PHPSESSID',  '', strtotime('-1 hour'), '/');
-        // header('Location: /phpmotors/view/home.php');
-        // break;
+        
     case 'updateAccountInformation':
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/client-update.php';
         break;
@@ -131,6 +135,10 @@ switch ($action) {
 
         $clientEmail = checkEmail($clientEmail);
         $checkPassword = checkPassword($clientPassword);
+
+        //login user information [working here]
+        $clientId = filter_input(INPUT_GET, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['clienteDetalhes'] = $clientId;
 
         // Check for missing data
         if (empty($clientEmail) || empty($checkPassword)) {

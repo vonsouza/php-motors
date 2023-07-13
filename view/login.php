@@ -39,6 +39,8 @@
                 <input type="password" id="clientPassword" name="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br><br>
 
                 <input type="hidden" name="action" value="loginUser">
+                <!-- working here -->
+                <input type="hidden" name="clientId" value=" <?php echo $clients['clientId']; ?> ">
                 <input type="submit" value="Sign In"><br><br>
             </form>
 

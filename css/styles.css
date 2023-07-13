@@ -1,5 +1,6 @@
 :root {
     --blue-color: #4c96d7;
+    --blue-light-color: #72b3ed;
     --light-grey: #d0d0d0;
 }
 
@@ -132,6 +133,55 @@ ul li {
     margin: 4%;
 }
 
+.underlined{
+    text-decoration: underline;
+}
+
+
+/* button */
+.button-edit {
+    align-items: center;
+    appearance: none;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd,sans-serif;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 6px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s,background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  
+  .button-edit:active,
+  .button-edit:focus {
+    outline: none;
+  }
+  
+  .button-edit:hover {
+    background-position: -20px -20px;
+  }
+  
+  .button-edit:focus:not(:active) {
+    box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+  }
+/* finish button */
 .messageSuccessOrError {
     color: darkcyan;
     font-size: smaller;
@@ -169,6 +219,16 @@ ul li {
 }
 
 /* vehicle */
+.review-card{
+    font-style: italic;
+    background-color: var(--blue-light-color);;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 700px;
+  }
+
 .vehicle-card {
     background-color: #f2f2f2;
     padding: 20px;
@@ -390,7 +450,8 @@ input:required:valid {
         margin-top: 1%;
     }
     .login-card,
-    .vehicle-card {
+    .vehicle-card,
+    .review-card {
         margin-inline-start: 20%;
         margin-inline-end: 20%
     }
@@ -424,7 +485,8 @@ input:required:valid {
 }
 @media (min-width: 1100px) {
     .login-card, 
-    .vehicle-card {
+    .vehicle-card,
+    .review-card {
         margin-inline-start: 30%;
         margin-inline-end: 30%;
     }
