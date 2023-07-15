@@ -41,7 +41,7 @@
                 <input type="hidden" name="action" value="loginUser">
                 <!-- working here -->
                 <input type="hidden" name="clientId" value=" <?php echo $clients['clientId']; ?> ">
-                <input type="submit" value="Sign In"><br><br>
+                <input class="button-edit" role="button-edit" type="submit" value="Sign In"><br><br>
             </form>
 
             <p>Not a member yet? <a href="/phpmotors/accounts/index.php?action=registration">Sign up here</a></p>

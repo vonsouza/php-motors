@@ -50,7 +50,7 @@
 
                 <!-- Add the action name - value pair -->
                 <input type="hidden" name="action" value="registerUser">
-                <input type="submit" value="Register">
+                <input class="button-edit" role="button-edit" type="submit" value="Register">
 
                 <br><br>
             </form>

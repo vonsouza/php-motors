@@ -44,49 +44,49 @@ switch ($action) {
         
         $regOutcome = addReview($reviewText, $reviewDate, $invId, $_SESSION ['clientData']['clientId']);
 
-
-        //working here
-        //$reviewData = getReviewsFromInvId($invId);
-        
-        // the array_pop function removes the last
-        // element from an array
-        //array_pop($reviewData);
-        // Store the array into the session
-        
-        //$_SESSION['reviewData'] = $reviewData;
-
         // Check and report the result
         if ($regOutcome === 1) {
-            // $message = "<p>Thanks for registering $invMake.</p>";
-            //$_SESSION['message'] = "Thanks for registering your review.";
             include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/success-review.php';
             exit;
         } else {
-            // $message = "<p>Sorry!! the registration for $invMake failed. Please try again.</p>";
-            //$_SESSION['message'] = "Sorry!! your review failed. Please try again.";
             include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/failed-review.php';
             exit;
         }
-
         break;
 
     case 'edit':
-        echo 'Deliver a view to edit a review.';
+        $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['reviewId'] = $reviewId;
+
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-edit.php';
+        exit;
+
+    case 'update-review':
+        $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        $regOutcome = updateReviewText($_SESSION['reviewId'], $reviewText);
+
+        $_SESSION['message'] = "Your review was updated! to:  . $reviewText . ";
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';
         break;
 
-    case 'update':
-        echo 'Handle the review update';
-        break;
-
-    case 'confirm':
-        echo 'Deliver a view to confirm deletion of a review.';
+    case 'confirm-deletion':
+        $regOutcome = deleteReviewId($_SESSION['reviewId']) ;
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-confirm-delete.php';
         break;
 
     case 'delete':
-        echo 'Handle the review deletion.';
+        $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['reviewId'] = $reviewId;
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-delete.php';
         break;
 
     default:
-        echo 'A default that will deliver the "admin" view if the client is logged in or the php motors home view if not';
+        //A default that will deliver the "admin" view if the client is logged in or the php motors home view if not
+        if (isset($_SESSION['loggedin'])) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';
+        }else{
+            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/home.php';
+        }
         break;  
 }

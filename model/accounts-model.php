@@ -62,7 +62,7 @@ function getClient($clientEmail){
     return $clientData;
    }
 
-// WORKING ON IT: Get client data based on an id
+// WORKING ON IT: Get client data based on clientId
 function getClientById($clientId){
     $db = phpmotorsConnect();
     $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
