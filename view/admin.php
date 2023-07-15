@@ -79,14 +79,14 @@ if (!isset($_SESSION['loggedin'])) {
         <?php
         echo '<h2> Account Management </h2>';
         echo '<span> Use this link to manage account information. </span> <br><br>';
-        echo '<a href="/phpmotors/accounts/index.php?action=updateAccountInformation" title="Account Information with PHP Motors" id="vehicleManagement">Update Account Information</a>';
+        echo '<a href="/phpmotors/accounts/index.php?action=updateAccountInformation" title="Update Account Information" id="updateAccountInformation">Update Account Information</a>';
         ?>
 
         <?php
         if ($_SESSION['clientData']['clientLevel'] == 2 || $_SESSION['clientData']['clientLevel'] == 3) {
             echo '<h2> Inventory Management </h2>';
             echo '<span> Use this link to manage the inventory. </span> <br><br>';
-            echo '<a href="/phpmotors/vehicles/index.php?action=vehicleManagement" title="Vehicle Management with PHP Motors" id="vehicleManagement">Vehicle Management </a>';
+            echo '<a href="/phpmotors/vehicles/index.php?action=vehicleManagement" title="Vehicle Management with PHP Motors" id="vehicle-Management">Vehicle Management</a>';
         }
         ?>
         <br><br>
@@ -106,9 +106,9 @@ if (!isset($_SESSION['loggedin'])) {
 
                     $reviewId = $review['reviewId']; ?>
 
-                    <a href="/phpmotors/reviews/index.php?action=edit&reviewId=<?php echo $review['reviewId'] ?>" title="edit Review" id="editReview">Edit</a>
+                    <a href="/phpmotors/reviews/index.php?action=edit&reviewId=<?php echo $review['reviewId'] ?>" title="edit Review" >Edit</a>
                     <span> | </span>
-                    <a href="/phpmotors/reviews/index.php?action=delete&reviewId=<?php echo $review['reviewId'] ?>" title="delete Review" id="deleteReview"> Delete</a> <br>
+                    <a href="/phpmotors/reviews/index.php?action=delete&reviewId=<?php echo $review['reviewId'] ?>" title="delete Review" > Delete</a> <br>
                     <br>
             <?php }
             } else {

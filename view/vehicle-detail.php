@@ -20,6 +20,14 @@
     <div class="internal-card">
         <div class="vehicle-card">
 
+            <div class="messageSuccessOrError">
+                <?php
+                if (isset($_SESSION['message'])) {
+                     echo $_SESSION['message'];
+                }
+                ?>
+            </div>
+
             <h1 class="vehicle-title"><span><?php echo $_SESSION['invDetail'][0]['invMake'] . ' ' . $_SESSION['invDetail'][0]['invModel']; ?> </span></h1>
 
             <img class="vehicle-img img-box" src="<?php echo $_SESSION['invDetail'][0]['invImage']; ?>" alt="image"><br>
@@ -96,8 +104,7 @@
         <!-- Previous Custumer Reviews -->
         <div class="review-card">
                 <h3><span class="underlined"><?php echo 'Custumer Reviews to ' . $_SESSION['invDetail'][0]['invMake'] . ' ' . $_SESSION['invDetail'][0]['invModel']; ?> </span></h3>
-                <br><br>
-                <tr></tr>                
+                <br><br>             
                 <!-- print reviews -->
                 <?php $reviewsFromThisCar = getReviewsFromInvId($_SESSION['invDetail'][0]['invId']); 
 
@@ -145,7 +152,7 @@
                 }  ?>
 
                 <br><br>
-                <tr></tr>
+                <tr>
             <hr>
         </div>
 
@@ -161,5 +168,9 @@
             return '';
         }
         return parsedAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        }
+        };
+        setTimeout(function() {
+        var messageDiv = document.querySelector('.messageSuccessOrError');
+        messageDiv.style.display = 'none';
+    }, 7000); // 7 seconds in milliseconds
 </script>

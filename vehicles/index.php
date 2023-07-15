@@ -25,6 +25,7 @@ if ($action == NULL) {
 switch ($action) {
 
     case 'addClassification':
+        unset($_SESSION['message']);
         // echo 'You are in the addClassification case statement.';
 
         // Filter and store the data
@@ -57,7 +58,7 @@ switch ($action) {
         break;
 
     case 'registerVehicle':
-
+        unset($_SESSION['message']);
         // Filter and store the data
         $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         $invModel = trim(filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -99,21 +100,25 @@ switch ($action) {
         break;
 
     case 'vehicleManagement':
+        unset($_SESSION['message']);
         //add ?action=vehicleManagement
         $_SESSION['loggedin'] = TRUE;
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/vehicle-man.php';
         break;
 
     case 'add-classification':
+        unset($_SESSION['message']);
         //add ?action=add-classification
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/add-classification.php';
         break;
     case 'add-vehicle':
+        unset($_SESSION['message']);
         //add ?action=add-vehicle
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/add-vehicle.php';
         break;
 
     case 'classification':
+        unset($_SESSION['message']);
         $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $vehicles = getVehiclesByClassification($classificationName);
 
@@ -128,6 +133,7 @@ switch ($action) {
         break;
 
     case 'vehicleDetail':
+        unset($_SESSION['message']);
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
 
         //Getting vehicle informations
@@ -142,6 +148,7 @@ switch ($action) {
         break;
 
     default:
+    unset($_SESSION['message']);
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/vehicle-man.php';
         break;
 }
