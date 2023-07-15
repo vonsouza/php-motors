@@ -36,25 +36,35 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'add-review':
+        unset($_SESSION['message']);
         // echo 'add-review: add a new review';
         // Filter and store the data
         $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $reviewDate = date('Y-m-d H:i:s');
+
+        if (empty($reviewText)) {
+            $_SESSION['message'] = "The review is empty, please type your review and try again.";
+            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/vehicle-detail.php';
+            exit;
+        }
         
         $regOutcome = addReview($reviewText, $reviewDate, $invId, $_SESSION ['clientData']['clientId']);
 
         // Check and report the result
         if ($regOutcome === 1) {
-            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/success-review.php';
+            $_SESSION['message'] = "Your review was added successfully!";
+            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/vehicle-detail.php';
             exit;
         } else {
-            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/failed-review.php';
+            $_SESSION['message'] = "Sorry. Your review was not added. Please try again.";
+            include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/vehicle-detail.php';
             exit;
         }
         break;
 
     case 'edit':
+        unset($_SESSION['message']);
         $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
         $_SESSION['reviewId'] = $reviewId;
 
@@ -62,26 +72,30 @@ switch ($action) {
         exit;
 
     case 'update-review':
+        unset($_SESSION['message']);
         $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         
         $regOutcome = updateReviewText($_SESSION['reviewId'], $reviewText);
 
-        $_SESSION['message'] = "Your review was updated! to:  . $reviewText . ";
+        $_SESSION['message'] = "Your review was updated to: $reviewText";
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';
         break;
 
     case 'confirm-deletion':
+        unset($_SESSION['message']);
         $regOutcome = deleteReviewId($_SESSION['reviewId']) ;
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-confirm-delete.php';
         break;
 
     case 'delete':
+        unset($_SESSION['message']);
         $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
         $_SESSION['reviewId'] = $reviewId;
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-delete.php';
         break;
 
     default:
+        unset($_SESSION['message']);
         //A default that will deliver the "admin" view if the client is logged in or the php motors home view if not
         if (isset($_SESSION['loggedin'])) {
             include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';

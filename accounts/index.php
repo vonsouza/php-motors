@@ -39,6 +39,7 @@ if ($action == NULL) {
 switch ($action) {
 
     case 'home':
+        unset($_SESSION['message']);
         //$_SESSION['loggedin'] = FALSE;
         //session_destroy();
         //unset($_SESSION);
@@ -48,6 +49,7 @@ switch ($action) {
         break;
 
     case 'logout':
+        unset($_SESSION['message']);
         $_SESSION['loggedin'] = FALSE;
         session_destroy();
         unset($_SESSION);
@@ -57,10 +59,12 @@ switch ($action) {
         break;
         
     case 'updateAccountInformation':
+        unset($_SESSION['message']);
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/client-update.php';
         break;
 
     case 'login':
+        unset($_SESSION['message']);
         setcookie('firstname',  '', time() - 3600);
         unset($_COOKIE['firstname']);
         $_SESSION['loggedin'] = FALSE;
@@ -68,10 +72,12 @@ switch ($action) {
         break;
 
     case 'registration':
+        unset($_SESSION['message']);
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/registration.php';
         break;
 
     case 'registerUser':
+        unset($_SESSION['message']);
         //echo 'You are in the register case statement.';
 
         // Filter and store the data
@@ -129,6 +135,7 @@ switch ($action) {
         break;
 
     case 'loginUser':
+        unset($_SESSION['message']);
         //echo 'You are in the loginUser case statement.';
         $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
         $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -181,12 +188,14 @@ switch ($action) {
         break;
 
     case 'adminView':
+        unset($_SESSION['message']);
         // Send them to the admin view
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';
         exit;
         break;
 
     case 'updateUser':
+        unset($_SESSION['message']);
         //echo 'You are in the updateUser case statement.';
 
         // Filter and store the data
@@ -236,6 +245,7 @@ switch ($action) {
         break;
 
     case 'updatePassword':
+        unset($_SESSION['message']);
         //echo 'You are in the updatePassword case statement.';
         // Filter and store the data
         $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -274,6 +284,7 @@ switch ($action) {
         break;
 
     default:
+        unset($_SESSION['message']);
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/home.php';
         break;
 }
