@@ -67,6 +67,17 @@ function regVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbna
     return $rowsChanged;
 }
 
+// WORKING ON IT: Get vehicle by invId
+function getVehicleByInvId($invId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT invMake, invModel FROM inventory WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $nameEdit = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $nameEdit;
+   }
 
 function getVehiclesByClassification($classificationName)
 {

@@ -50,6 +50,33 @@ function getReviewsFromInvId($invId){
     $stmt->closeCursor();
     return $reviewData;
    }
+
+//my work
+// Get reviews data based on reviewId
+function getReviewsByReviewId($reviewId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT reviewId, reviewText, reviewDate, invId, clientId FROM reviews WHERE reviewId = :reviewId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_STR);
+    $stmt->execute();
+    $reviewData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $reviewData;
+   }
+
+   //my work
+// Get reviews data based on clientId
+function getReviewsByClientId($clientId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT reviewId, reviewText, reviewDate, invId, clientId FROM reviews WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $reviewData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $reviewData;
+   }
+
    //my work
 // Quero o o cliente q comentou (clientId)
 function getClientIdFromReview($invId){
@@ -62,7 +89,36 @@ function getClientIdFromReview($invId){
     $stmt->closeCursor();
     return $reviewData;
    }
-   
+
+//my work
+// Update: find in the table reviews, the given $reviewId and update the $reviewText to the $reviewText given
+function updateReviewText($reviewId, $reviewText){
+    $db = phpmotorsConnect();
+    $sql = "UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewText', $reviewText);
+    $stmt->bindValue(':reviewId', $reviewId);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+
+    return $rowsChanged;
+}
+
+//my work
+// DELETE: find in the table reviews, the given $reviewId and update the $reviewText to the $reviewText given
+function deleteReviewId($reviewId) {
+    $db = phpmotorsConnect();
+    $sql = "DELETE FROM reviews WHERE reviewId = :reviewId";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewId', $reviewId);
+    $stmt->execute();
+    $rowsDeleted = $stmt->rowCount();
+    $stmt->closeCursor();
+
+    return $rowsDeleted;
+}
+
 // reviewId  -- automatico ok
 // reviewText -- ok
 // reviewDate -- acho q não precisa de nada ok

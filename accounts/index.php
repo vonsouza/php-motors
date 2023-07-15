@@ -180,6 +180,12 @@ switch ($action) {
         exit;
         break;
 
+    case 'adminView':
+        // Send them to the admin view
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/admin.php';
+        exit;
+        break;
+
     case 'updateUser':
         //echo 'You are in the updateUser case statement.';
 

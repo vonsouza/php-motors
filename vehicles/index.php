@@ -124,9 +124,6 @@ switch ($action) {
             $vehicleDisplay = buildVehiclesDisplay($vehicles);
         }
 
-        // echo $vehicleDisplay;
-        // exit;
-
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/classification.php';
         break;
 
